@@ -1,0 +1,538 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplifica Digital Voluntário | Redes e Linux</title>
+    <meta name="description"
+        content="Mini curso gratuito sobre Redes de Computadores e Linux, oferecido pelo Simplifica Digital Voluntário.">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">Simplifica Digital</div>
+        <nav class="nav-desktop">
+            <ul>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#networks">Redes</a></li>
+                <li><a href="#linux">Linux</a></li>
+                <li><a href="#servers">Servidores</a></li>
+                <li><a href="#videos">Vídeo Aulas</a></li>
+                <li><a href="#pratica">Prática</a></li>
+            </ul>
+        </nav>
+        <div class="navbar-actions">
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
+                <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="drawer-header">
+            <div class="logo">Simplifica Digital</div>
+            <button id="close-drawer" class="close-drawer-btn" aria-label="Fechar Menu">&times;</button>
+        </div>
+        <nav class="drawer-nav">
+            <ul>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#networks">Redes</a></li>
+                <li><a href="#linux">Linux</a></li>
+                <li><a href="#servers">Servidores</a></li>
+                <li><a href="#videos">Vídeo Aulas</a></li>
+                <li><a href="#pratica">Prática</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1 class="main-title">Conhecimento compartilhado é o que move a inovação.</h1>
+                <p>Ensinamos o que aprendemos em sala de aula sobre <span class="mono">Redes</span> e <span
+                        class="mono">Linux</span>, de aluno para aluno, com linguagem clara e direta. Um projeto <span
+                        class="brand-name">Simplifica Digital</span>.</p>
+                <a href="#about" class="btn btn-primary">Começar Jornada</a>
+            </div>
+            <div class="hero-glow background-glow"></div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section glass-panel">
+            <div class="container section-fade">
+                <h2>Sobre o Curso</h2>
+                <div class="about-grid">
+                    <div class="about-card border-glow-red">
+                        <h3>Feito por Voluntários</h3>
+                        <p>Conteúdo cuidadosamente elaborado pelo grupo <strong>Simplifica Digital Voluntário</strong>
+                            com o objetivo de democratizar o acesso à tecnologia.</p>
+                        <div style="margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap;">
+                            <a href="https://www.instagram.com/simplifica_digital25?igsh=MW04Z2JycGhrc3d5eA=="
+                                target="_blank" class="btn btn-primary"
+                                style="padding: 10px 20px; font-size: 0.8rem;">Instagram</a>
+                            <a href="https://youtube.com/@simplifica_digital?si=I-3LM-fAeClud42I" target="_blank"
+                                class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">YouTube</a>
+                            <a href="https://www.tiktok.com/@simplifica_digital" target="_blank" class="btn btn-primary"
+                                style="padding: 10px 20px; font-size: 0.8rem;">TikTok</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 60px;">
+                    <a href="#networks" class="btn btn-primary" style="font-size: 1.1rem; padding: 18px 40px; box-shadow: 0 0 20px var(--primary-blue-glow);">Iniciar o Curso!</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Networks Module -->
+        <section id="networks" class="module-section networks-theme">
+            <div class="container section-fade flex-row">
+                <div class="text-content">
+                    <h2>Módulo 1: Infraestrutura de Redes</h2>
+                    <p>Este módulo sintetiza as competências do ciclo completo de TI, desde a concepção física da rede
+                        até a administração de sistemas. O foco é garantir comunicação de dados segura, estável e
+                        escalável.</p>
+
+                    <details class="custom-accordion">
+                        <summary>Síntese Acadêmica</summary>
+                        <div class="accordion-content">
+                            <p>Este conteúdo consolida o aprendizado técnico sobre o ciclo de vida de uma rede local.
+                                Competências desenvolvidas em três pilares fundamentais:</p>
+                            <ul>
+                                <li><strong>Infraestrutura Física:</strong> Montagem de ativos, organização de racks e
+                                    certificação de pontos de rede.</li>
+                                <li><strong>Continuidade e Manutenção:</strong> Implementação de rotinas preventivas e
+                                    corretivas para assegurar a alta disponibilidade.</li>
+                                <li><strong>Administração Lógica:</strong> Instalação e configuração de NOS e serviços
+                                    essenciais (DNS, DHCP, AD) aliados a monitoramento real.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="custom-accordion">
+                        <summary>UC5: Instalação de Redes Locais</summary>
+                        <div class="accordion-content">
+                            <p>Este processo consiste no levantamento técnico do ambiente para definir a melhor
+                                topologia e o posicionamento dos equipamentos. A execução envolve a passagem de cabos,
+                                montagem de conectores e racks, garantindo suporte de tráfego sem interferências.</p>
+                            <ul>
+                                <li><strong>Planejamento Físico:</strong> Estudo de topologias e instalação de ativos de
+                                    rede (switches/roteadores).</li>
+                                <li><strong>Manutenção:</strong> Estratégias para identificar falhas e otimizar
+                                    performance.</li>
+                                <li><strong>Sistemas Operacionais (NOS):</strong> Instalação de ambientes focados em
+                                    serviços essenciais.</li>
+                                <li><strong>Monitoramento:</strong> Uso de ferramentas para acompanhar a saúde de
+                                    servidores.</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="custom-accordion">
+                        <summary>UC6: Manutenção de Redes Locais</summary>
+                        <div class="accordion-content">
+                            <p>O planejamento utiliza normas de cabeamento estruturado para criar um projeto escalável.
+                                A execução foca na identificação correta para permitir que qualquer técnico entenda a
+                                estrutura rapidamente.</p>
+                            <ul>
+                                <li><strong>Infraestrutura e Topologias:</strong> Planejamento e configuração física de
+                                    ativos para integridade.</li>
+                                <li><strong>Continuidade de Negócio:</strong> Aplicação de rotinas preventivas para
+                                    evitar paradas (manutenções ágeis).</li>
+                                <li><strong>Administração (NOS):</strong> Domínio na instalação para serviços como DNS,
+                                    DHCP e diretórios.</li>
+                                <li><strong>Gestão de Saúde:</strong> Ferramentas de análise em tempo real para
+                                    incidentes e vulnerabilidades.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                </div>
+                <div class="image-content border-glow-blue flip-card" id="networkFlipCard">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glow-image">
+                            <!-- A classe glow-image continua na frente para o efeito de hover funcionar nela -->
+                            <img src="assets/network.png" alt="Equipamentos de Rede e Cabos">
+                        </div>
+                        <div class="flip-card-back glass-panel">
+                            <h3>Resumo: Redes</h3>
+                            <p>As redes de computadores interligam dispositivos globalmente. Compreender redes envolve
+                                entender roteadores, switches, cabeamentos (como o par trançado RJ-45) e os protocolos
+                                TCP/IP que garantem a comunicação da internet.</p>
+                            <span class="click-hint">Clique novamente para voltar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Linux Module -->
+        <section id="linux" class="module-section linux-theme">
+            <div class="container section-fade flex-row-reverse">
+                <div class="text-content">
+                    <h2>Módulo 2: Linux</h2>
+                    <p>Desmistifique a linha de comando. Descubra por que o Linux é amplamente escolhido por
+                        administradores de rede no mundo todo.</p>
+                    <details class="custom-accordion">
+                        <summary>Administração e Terminal Shell</summary>
+                        <div class="accordion-content">
+                            <p>O foco deste módulo é capacitar o profissional na operação fluida via terminal. O Linux
+                                oferece flexibilidade e controle incomparáveis, sendo o alicerce da maioria dos
+                                servidores mundiais.</p>
+                            <ul>
+                                <li><strong>Shell Scripting:</strong> Automação de rotinas de administração e tarefas
+                                    repetitivas.</li>
+                                <li><strong>Estrutura FHS:</strong> Organização lógica e hierarquia dos diretórios e
+                                    arquivos de sistema.</li>
+                                <li><strong>Gestão de Acessos:</strong> Administração avançada de usuários, grupos e
+                                    permissões rigorosas.</li>
+                                <li><strong>Ferramentas de Rede:</strong> Comandos essenciais nativos para diagnóstico,
+                                    rotas e testes de conectividade.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                </div>
+                <div class="image-content border-glow-red flip-card" id="linuxFlipCard">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glow-image">
+                            <!-- A classe glow-image continua na frente para o hover funcionar nela -->
+                            <img src="assets/linux.png" alt="Terminal Linux">
+                        </div>
+                        <div class="flip-card-back glass-panel flip-card-back-red">
+                            <h3>Resumo: Linux</h3>
+                            <p>O Linux é o sistema operacional preferido para servidores em todo o mundo. Ele se destaca
+                                pela estabilidade, estrutura de diretórios e pela poderosa linha de comando essencial em
+                                administração de sistemas.</p>
+                            <span class="click-hint click-hint-red">Clique novamente para voltar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servers Module -->
+        <section id="servers" class="module-section servers-theme">
+            <div class="container section-fade flex-row">
+                <div class="text-content">
+                    <h2>Módulo 3: Servidores</h2>
+                    <p>Mergulhe no coração da infraestrutura de TI. Aprenda como configurar, gerenciar e monitorar
+                        plataformas corporativas contínuamente.</p>
+                    <details class="custom-accordion">
+                        <summary>UC7: Configuração de Servidores</summary>
+                        <div class="accordion-content">
+                            <p>Esta unidade foca na inteligência da rede, indo além dos cabos para configurar o ambiente
+                                de dados. O objetivo é transformar hardware em uma plataforma que opera com segurança e
+                                controle total.</p>
+                            <ul>
+                                <li><strong>Projeto e Escalabilidade:</strong> Planejamento baseado em normas
+                                    internacionais para crescer sem gargalos.</li>
+                                <li><strong>Execução Técnica:</strong> Instalação prática de tomadas (keystones) e patch
+                                    panels nos padrões.</li>
+                                <li><strong>Identificação:</strong> Processo de etiquetagem de todos os pontos de rede.
+                                </li>
+                                <li><strong>Integridade do Sinal:</strong> Verificação física para evitar ruídos
+                                    eletromagnéticos garantindo máxima velocidade.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                </div>
+                <div class="image-content border-glow-green flip-card" id="serverFlipCard">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glow-image">
+                            <!-- A classe glow-image continua na frente para o efeito de hover funcionar nela -->
+                            <img src="assets/server.png" alt="Hardware de Servidor">
+                        </div>
+                        <div class="flip-card-back glass-panel flip-card-back-green">
+                            <h3>Resumo: Servidores</h3>
+                            <p>Servidores são computadores dedicados de alta performance. Eles processam requisições e
+                                entregam dados de forma contínua, sendo o pilar das redes corporativas e da internet.
+                            </p>
+                            <span class="click-hint click-hint-green">Clique novamente para voltar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section id="videos" class="videos-section">
+            <div class="container section-fade">
+                <h2>V&iacute;deo aulas: Montando Cabos de Rede</h2>
+                <p class="subtitle">Assista às vídeo-aulas produzidas pela nossa equipe para aprender o passo a passo completo de como montar seu cabo RJ-45.</p>
+                
+                <div class="video-hub">
+                    <!-- Player Area -->
+                    <div class="video-player-container border-glow-blue">
+                        <div class="video-wrapper">
+                            <video id="main-course-video" controls preload="metadata">
+                                <source src="video.mp4" type="video/mp4">
+                                Seu navegador não suporta a reprodução deste vídeo.
+                            </video>
+                        </div>
+                        <div class="video-details">
+                            <span class="video-badge">Vídeo Selecionado</span>
+                            <h3 id="current-video-title">Visão Geral: Ciclo de TI e Infraestrutura</h3>
+                            <p id="current-video-desc">Nesta aula introdutória, revisamos todo o fluxo técnico do ciclo completo de infraestrutura física de TI.</p>
+                        </div>
+                    </div>
+
+                    <!-- Playlist Sidebar -->
+                    <div class="video-playlist-container glass-panel">
+                        <div class="playlist-header">
+                            <h3>V&iacute;deo aulas</h3>
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-info">
+                                    <span>Seu Progresso</span>
+                                    <span id="playlist-progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div id="playlist-progress-fill" class="progress-bar-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="playlist-items">
+                            <!-- Lesson 1 (Active) -->
+                            <div class="playlist-item active" data-src="video.mp4" data-title="Visão Geral: Ciclo de TI e Infraestrutura" data-desc="Nesta aula introdutória, revisamos todo o fluxo técnico do ciclo completo de infraestrutura física de TI.">
+                                <div class="playlist-item-status">
+                                    <span class="status-icon icon-pending"></span>
+                                </div>
+                                <div class="playlist-item-info">
+                                    <span class="playlist-item-index">Geral</span>
+                                    <h4>Visão Geral: Ciclo de TI e Infraestrutura</h4>
+                                </div>
+                            </div>
+                            
+                            <!-- Lesson 2 -->
+                            <div class="playlist-item" data-src="WhatsApp Video 2026-06-03 at 22.15.34.mp4" data-title="Parte 1: Introdução à Infraestrutura de Redes" data-desc="Conheça os principais conceitos de infraestrutura de redes locais e os ativos físicos.">
+                                <div class="playlist-item-status">
+                                    <span class="status-icon icon-pending"></span>
+                                </div>
+                                <div class="playlist-item-info">
+                                    <span class="playlist-item-index">Parte 1</span>
+                                    <h4>Introdução à Infraestrutura de Redes</h4>
+                                </div>
+                            </div>
+
+                            <!-- Lesson 3 -->
+                            <div class="playlist-item" data-src="WhatsApp Video 2026-06-04 at 13.07.23.mp4" data-title="Parte 2: Ferramentas e Preparação do Cabo" data-desc="Veja as ferramentas essenciais para a montagem e crimpagem de cabos de rede de par trançado.">
+                                <div class="playlist-item-status">
+                                    <span class="status-icon icon-pending"></span>
+                                </div>
+                                <div class="playlist-item-info">
+                                    <span class="playlist-item-index">Parte 2</span>
+                                    <h4>Ferramentas e Preparação do Cabo</h4>
+                                </div>
+                            </div>
+
+                            <!-- Lesson 4 -->
+                            <div class="playlist-item" data-src="WhatsApp Video 2026-06-04 at 17.31.49.mp4" data-title="Parte 3: Decapagem e Preparação dos Pares" data-desc="Como decapar o cabo UTP corretamente e desembaraçar os pares sem danificar a blindagem.">
+                                <div class="playlist-item-status">
+                                    <span class="status-icon icon-pending"></span>
+                                </div>
+                                <div class="playlist-item-info">
+                                    <span class="playlist-item-index">Parte 3</span>
+                                    <h4>Decapagem e Preparação dos Pares</h4>
+                                </div>
+                            </div>
+
+                            <!-- Lesson 5 -->
+                            <div class="playlist-item" data-src="WhatsApp Video 2026-06-06 at 12.30.12.mp4" data-title="Parte 4: Padrões de Cores T568A e T568B" data-desc="Aprenda a sequência de cores correta para montar cabos de rede nos padrões A e B de forma padronizada.">
+                                <div class="playlist-item-status">
+                                    <span class="status-icon icon-pending"></span>
+                                </div>
+                                <div class="playlist-item-info">
+                                    <span class="playlist-item-index">Parte 4</span>
+                                    <h4>Padrões de Cores T568A e T568B</h4>
+                                </div>
+                            </div>
+
+                            <!-- Lesson 6 -->
+                            <div class="playlist-item" data-src="WhatsApp Video 2026-06-06 at 12.30.14.mp4" data-title="Parte 5: Organização no Conector RJ-45" data-desc="Aprenda a alinhar os fios perfeitamente e inseri-los no conector RJ-45 mantendo a integridade.">
+                                <div class="playlist-item-status">
+                                    <span class="status-icon icon-pending"></span>
+                                </div>
+                                <div class="playlist-item-info">
+                                    <span class="playlist-item-index">Parte 5</span>
+                                    <h4>Organização no Conector RJ-45</h4>
+                                </div>
+                            </div>
+
+                            <!-- Lesson 7 -->
+                            <div class="playlist-item" data-src="WhatsApp Video 2026-06-06 at 12.30.18.mp4" data-title="Parte 6: Crimpagem do Conector com Alicate" data-desc="A técnica correta de crimpar o conector usando o alicate de pressão de forma segura e firme.">
+                                <div class="playlist-item-status">
+                                    <span class="status-icon icon-pending"></span>
+                                </div>
+                                <div class="playlist-item-info">
+                                    <span class="playlist-item-index">Parte 6</span>
+                                    <h4>Crimpagem com Alicate de Pressão</h4>
+                                </div>
+                            </div>
+
+                            <!-- Lesson 8 -->
+                            <div class="playlist-item" data-src="WhatsApp Video 2026-06-06 at 12.30.21.mp4" data-title="Parte 7: Teste de Conectividade e Certificação" data-desc="Como utilizar o testador de cabos de rede para garantir que todos os 8 contatos estão funcionando perfeitamente.">
+                                <div class="playlist-item-status">
+                                    <span class="status-icon icon-pending"></span>
+                                </div>
+                                <div class="playlist-item-info">
+                                    <span class="playlist-item-index">Parte 7</span>
+                                    <h4>Testes de Conectividade e Certificação</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Practice Section -->
+        <section id="pratica" class="practice-section">
+            <div class="container section-fade">
+                <h2>Pr&aacute;tica</h2>
+                <p class="subtitle">Responda ao quiz geral dos v&iacute;deos e m&oacute;dulos para revisar os principais pontos do mini curso.</p>
+
+                <div class="practice-grid networks-theme">
+                    <div class="practice-item">
+                        <div class="quiz-container glass-panel show-quiz">
+                            <h3>Quiz Geral</h3>
+                            <form id="quiz-general" data-module="general">
+                                <div class="quiz-progress" aria-live="polite">
+                                    <span id="quizStepText">Pergunta 1 de 10</span>
+                                    <div class="quiz-progress-bar">
+                                        <div id="quizStepFill" class="quiz-progress-fill" style="width: 10%;"></div>
+                                    </div>
+                                </div>
+                                <div class="quiz-stage">
+                                    <span>Etapa 1</span>
+                                    <strong>Fácil: fundamentos</strong>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>1.</strong> O que envolve compreender redes de computadores?</p>
+                                    <label><input type="radio" name="q1" value="A"> A) Apenas formatar computadores e instalar antivírus.</label>
+                                    <label><input type="radio" name="q1" value="B"> B) Entender roteadores, switches, cabeamentos e protocolos TCP/IP.</label>
+                                    <label><input type="radio" name="q1" value="C"> C) Usar exclusivamente redes sem fio via Bluetooth.</label>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>2.</strong> Na instalação de redes locais, a execução técnica envolve principalmente:</p>
+                                    <label><input type="radio" name="q2" value="A"> A) Passagem de cabos, montagem de conectores e racks.</label>
+                                    <label><input type="radio" name="q2" value="B"> B) Criação de sites estáticos usando HTML e CSS.</label>
+                                    <label><input type="radio" name="q2" value="C"> C) Desenvolvimento de jogos para computadores.</label>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>3.</strong> Qual componente interliga dispositivos em uma rede local?</p>
+                                    <label><input type="radio" name="q3" value="A"> A) Switch.</label>
+                                    <label><input type="radio" name="q3" value="B"> B) Editor de texto.</label>
+                                    <label><input type="radio" name="q3" value="C"> C) Planilha eletrônica.</label>
+                                </div>
+                                <div class="quiz-stage">
+                                    <span>Etapa 2</span>
+                                    <strong>Médio: sistemas e servidores</strong>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>4.</strong> Por que o Linux é muito usado em servidores?</p>
+                                    <label><input type="radio" name="q4" value="A"> A) Porque exibe interfaces visuais 3D para jogos.</label>
+                                    <label><input type="radio" name="q4" value="B"> B) Pela estabilidade, estrutura de diretórios e linha de comando poderosa.</label>
+                                    <label><input type="radio" name="q4" value="C"> C) Porque não possui hierarquia de arquivos.</label>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>5.</strong> Qual é o papel principal do Shell Scripting?</p>
+                                    <label><input type="radio" name="q5" value="A"> A) Automatizar rotinas de administração e tarefas repetitivas.</label>
+                                    <label><input type="radio" name="q5" value="B"> B) Organizar fisicamente os cabos no servidor.</label>
+                                    <label><input type="radio" name="q5" value="C"> C) Criar documentos de texto para relatórios corporativos.</label>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>6.</strong> O que são servidores dentro de uma infraestrutura?</p>
+                                    <label><input type="radio" name="q6" value="A"> A) Computadores pessoais focados em navegação simples.</label>
+                                    <label><input type="radio" name="q6" value="B"> B) Roteadores que apenas distribuem sinais de Wi-Fi em casa.</label>
+                                    <label><input type="radio" name="q6" value="C"> C) Computadores dedicados de alta performance que processam requisições continuamente.</label>
+                                </div>
+                                <div class="quiz-stage">
+                                    <span>Etapa 3</span>
+                                    <strong>Intermediário: vídeo aulas práticas</strong>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>7.</strong> Qual etapa prepara o cabo UTP antes de organizar os pares?</p>
+                                    <label><input type="radio" name="q7" value="A"> A) Decapar o cabo com cuidado para expor os pares.</label>
+                                    <label><input type="radio" name="q7" value="B"> B) Molhar os fios para facilitar a crimpagem.</label>
+                                    <label><input type="radio" name="q7" value="C"> C) Cortar todos os pares em tamanhos diferentes.</label>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>8.</strong> Para montar um cabo RJ-45 corretamente, é importante seguir:</p>
+                                    <label><input type="radio" name="q8" value="A"> A) Qualquer ordem de cores, desde que o cabo encaixe.</label>
+                                    <label><input type="radio" name="q8" value="B"> B) Os padrões de cores T568A ou T568B.</label>
+                                    <label><input type="radio" name="q8" value="C"> C) Apenas a cor externa da capa do cabo.</label>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>9.</strong> No vídeo de montagem de cabos, qual etapa ajuda a confirmar que os contatos do RJ-45 funcionam?</p>
+                                    <label><input type="radio" name="q9" value="A"> A) Teste de conectividade com testador de cabos.</label>
+                                    <label><input type="radio" name="q9" value="B"> B) Pintura externa do cabo para identificação visual.</label>
+                                    <label><input type="radio" name="q9" value="C"> C) Reinicialização do computador sem conectar o cabo.</label>
+                                </div>
+                                <div class="quiz-stage">
+                                    <span>Etapa 4</span>
+                                    <strong>Avançado: análise de infraestrutura</strong>
+                                </div>
+                                <div class="quiz-question">
+                                    <p><strong>10.</strong> Em uma rede corporativa, por que monitorar servidores e ativos de rede é uma prática avançada importante?</p>
+                                    <label><input type="radio" name="q10" value="A"> A) Porque substitui a necessidade de cabeamento físico.</label>
+                                    <label><input type="radio" name="q10" value="B"> B) Porque permite acompanhar disponibilidade, identificar falhas e agir antes de paradas maiores.</label>
+                                    <label><input type="radio" name="q10" value="C"> C) Porque impede qualquer atualização futura no ambiente.</label>
+                                </div>
+                                <div class="quiz-navigation">
+                                    <button type="button" id="prevQuizBtn" class="btn btn-primary btn-quiz">Voltar</button>
+                                    <button type="button" id="nextQuizBtn" class="btn btn-primary btn-quiz">Próxima</button>
+                                </div>
+                                <div class="quiz-result" style="display: none;"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Grupo Simplifica Digital Voluntário. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Congrats Modal -->
+    <div id="congratsModal" class="congrats-modal">
+        <div class="congrats-content certificate-content glass-panel border-glow-blue">
+            <span class="certificate-label">Certificado de Conclusão</span>
+            <h2 class="brand-name">Simplifica Digital</h2>
+            <p>Certificamos que você concluiu a prática do mini curso de Redes, Linux e Servidores.</p>
+            <div class="certificate-score">
+                <span id="certificatePercent">0%</span>
+                <small id="certificateDetails">0 de 0</small>
+            </div>
+            <p class="certificate-note">Resultado calculado com base nas respostas do quiz geral.</p>
+            <div class="certificate-actions">
+                <button id="downloadCertificateBtn" class="btn btn-primary">Baixar PDF</button>
+                <button id="closeModalBtn" class="btn btn-primary">Voltar ao Início</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
