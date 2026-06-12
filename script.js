@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     
     // ================================================================
     // 1. GERENCIADOR DE TEMAS (LIGHT / DARK MODE)
@@ -169,6 +169,9 @@
     const currentVideoDesc = document.getElementById('current-video-desc');
     const playlistProgressFill = document.getElementById('playlist-progress-fill');
     const playlistProgressPercent = document.getElementById('playlist-progress-percent');
+    const prevVideoBtn = document.getElementById('prevVideoBtn');
+    const nextVideoBtn = document.getElementById('nextVideoBtn');
+    const autoplayStatus = document.getElementById('autoplay-status');
 
     // Rastreia o progresso do curso
     const courseProgress = {
@@ -196,62 +199,129 @@
         };
     }
 
-    // Playlist Item Click Controller
-    playlistItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const videoSrc = item.getAttribute('data-src');
-            const title = item.getAttribute('data-title');
-            const desc = item.getAttribute('data-desc');
-            const currentSource = mainVideo ? mainVideo.querySelector('source') : null;
-            const isSameVideo = currentSource && currentSource.getAttribute('src') === videoSrc;
+    function markVideoCompleted(item) {
+        if (!item) return;
 
-            // Remove classe ativa de outros e adiciona neste
-            playlistItems.forEach(p => p.classList.remove('active'));
-            item.classList.add('active');
+        const videoSrc = item.getAttribute('data-src');
+        courseProgress.videosCompleted.add(videoSrc);
 
-            // Carrega novo vídeo
-            if (mainVideo) {
-                if (isSameVideo) {
+        const statusIcon = item.querySelector('.status-icon');
+        if (statusIcon) {
+            statusIcon.className = 'status-icon icon-completed';
+        }
+
+        updateProgressBar();
+    }
+
+    function updateVideoNavigation() {
+        const activeIndex = Array.from(playlistItems).findIndex(item => item.classList.contains('active'));
+        const hasPrevVideo = activeIndex > 0;
+        const hasNextVideo = activeIndex >= 0 && activeIndex < playlistItems.length - 1;
+
+        if (prevVideoBtn) {
+            prevVideoBtn.disabled = !hasPrevVideo;
+            prevVideoBtn.hidden = !hasPrevVideo;
+            prevVideoBtn.textContent = 'Vídeo anterior';
+        }
+
+        if (nextVideoBtn) {
+            nextVideoBtn.disabled = !hasNextVideo;
+            nextVideoBtn.textContent = hasNextVideo ? 'Próximo vídeo' : 'Último vídeo';
+        }
+    }
+
+    function selectPlaylistItem(item, shouldPlay = true) {
+        if (!item) return;
+
+        const videoSrc = item.getAttribute('data-src');
+        const title = item.getAttribute('data-title');
+        const desc = item.getAttribute('data-desc');
+        const currentSource = mainVideo ? mainVideo.querySelector('source') : null;
+        const isSameVideo = currentSource && currentSource.getAttribute('src') === videoSrc;
+
+        // Remove classe ativa de outros e adiciona neste
+        playlistItems.forEach(p => p.classList.remove('active'));
+        item.classList.add('active');
+
+        // Carrega novo vídeo
+        if (mainVideo) {
+            if (isSameVideo) {
+                if (shouldPlay) {
                     mainVideo.play().catch(error => {
                         console.log('Autoplay impedido pelo navegador:', error);
                     });
-                } else if (currentSource) {
-                    // Pausa antes de mudar de fonte
-                    mainVideo.pause();
-                    currentSource.setAttribute('src', videoSrc);
-                    mainVideo.load();
+                }
+            } else if (currentSource) {
+                // Pausa antes de mudar de fonte
+                mainVideo.pause();
+                currentSource.setAttribute('src', videoSrc);
+                mainVideo.load();
 
-                    // Inicia a reprodução
+                // Inicia a reprodução
+                if (shouldPlay) {
                     mainVideo.play().catch(error => {
                         console.log('Autoplay impedido pelo navegador:', error);
                     });
                 }
             }
+        }
 
-            // Atualiza metadados na tela
-            if (currentVideoTitle) currentVideoTitle.textContent = title;
-            if (currentVideoDesc) currentVideoDesc.textContent = desc;
+        // Atualiza metadados na tela
+        if (currentVideoTitle) currentVideoTitle.textContent = title;
+        if (currentVideoDesc) currentVideoDesc.textContent = desc;
+        if (autoplayStatus) autoplayStatus.textContent = 'Avanço automático ativado';
+        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        updateVideoNavigation();
+    }
+
+    function playNextVideo() {
+        const activeIndex = Array.from(playlistItems).findIndex(item => item.classList.contains('active'));
+        const nextItem = playlistItems[activeIndex + 1];
+
+        if (nextItem) {
+            selectPlaylistItem(nextItem, true);
+        } else if (autoplayStatus) {
+            autoplayStatus.textContent = 'Todas as vídeo aulas foram concluídas';
+        }
+    }
+
+    function playPrevVideo() {
+        const activeIndex = Array.from(playlistItems).findIndex(item => item.classList.contains('active'));
+        const prevItem = playlistItems[activeIndex - 1];
+
+        if (prevItem) {
+            selectPlaylistItem(prevItem, true);
+        }
+    }
+
+    // Playlist Item Click Controller
+    playlistItems.forEach(item => {
+        item.addEventListener('click', () => {
+            selectPlaylistItem(item, true);
         });
     });
+
+    if (prevVideoBtn) {
+        prevVideoBtn.addEventListener('click', playPrevVideo);
+    }
+
+    if (nextVideoBtn) {
+        nextVideoBtn.addEventListener('click', playNextVideo);
+    }
+
+    updateVideoNavigation();
 
     // Quando um vídeo é tocado, marca-o como completado na playlist e atualiza o progresso
     if (mainVideo) {
         mainVideo.addEventListener('play', () => {
             const activeItem = document.querySelector('.playlist-item.active');
-            if (activeItem) {
-                const videoSrc = activeItem.getAttribute('data-src');
-                
-                // Marca como completado
-                courseProgress.videosCompleted.add(videoSrc);
-                
-                // Altera o ícone visualmente
-                const statusIcon = activeItem.querySelector('.status-icon');
-                if (statusIcon) {
-                    statusIcon.className = 'status-icon icon-completed';
-                }
+            markVideoCompleted(activeItem);
+        });
 
-                updateProgressBar();
-            }
+        mainVideo.addEventListener('ended', () => {
+            const activeItem = document.querySelector('.playlist-item.active');
+            markVideoCompleted(activeItem);
+            playNextVideo();
         });
     }
 
